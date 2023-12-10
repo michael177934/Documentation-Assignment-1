@@ -23,22 +23,28 @@
 
 
 
-##Frontend/UI:
+### Frontend/UI:
 
 The user interface responsible for user interactions and initiating requests.
-API Gateway:
+
+### API Gateway:
 
 Manages external and internal communication.
 Responsible for authentication, request routing, and ensuring secure communication.
-Java Microservices (MS1, MS2):
+
+### Java Microservices (MS1, MS2):
 
 Implement business logic in Java using Spring Boot.
 Interact with shared data stores and provide specific functionalities.
-Node.js Microservices (MS1, MS2):
+
+
+### Node.js Microservices (MS1, MS2):
 
 Implement business logic in Node.js using Express.js.
 Communicate with shared data stores and handle external partner access.
-Shared Data Stores:
+
+
+### Shared Data Stores:
 
 Aurora (Relational DB):
 A relational database for Java microservices.
@@ -49,14 +55,17 @@ Used for caching to improve performance.
 MongoDB (Document DB):
 A document database for specialized data storage needs.
 Communication Patterns:
-External Communication:
+
+
+### External Communication:
 
 External partners and users communicate with the banking application through the API Gateway.
 Internal Communication:
 
 Microservices communicate with each other through the API Gateway.
 Shared data stores facilitate data exchange between microservices.
-Data Flow:
+
+### Data Flow:
 User Interaction:
 
 Users interact with the frontend, initiating requests for banking operations.
@@ -70,8 +79,10 @@ Data consistency is maintained through these interactions.
 Security Measures:
 Authentication and Authorization:
 
-API Gateway manages authentication and authorization, ensuring secure communication.
-Datastore Security:
+### API Gateway manages authentication and authorization, ensuring secure communication.
+
+
+### Datastore Security:
 
 Shared data stores are secured using encryption at rest and in transit.
 Additional Considerations:

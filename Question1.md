@@ -1,4 +1,6 @@
-### Design a microservices architecture forthe banking application that includes Java and Node.js microservices.
+### Create a high-level diagram illustrating the architecture, including services, data stores, and communication patterns between microservice
+
+
 
 
 
@@ -26,7 +28,7 @@
                                         +----------------+ +----------------+             +----------------+ +----------------+
 
 
-
+### Design a microservices architecture forthe banking application that includes Java and Node.js microservices.
 ### Frontend/UI:
 
 The user interface responsible for user interactions and initiating requests.

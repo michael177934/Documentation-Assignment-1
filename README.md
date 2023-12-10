@@ -1,6 +1,8 @@
 # Documentation-Assignment-1
 
-### Question1: Design a microservices architecture forthe banking application that include both Java and Node.js microservices.  Create a high-level diagram illustrating the architecture, including services, data stores, and communication patterns between. 
+### Question1: Design a microservices architecture forthe banking application that include both Java and Node.js microservices. 
+
+### Question1: Create a high-level diagram illustrating the architecture, including services, data stores, and communication patterns between. 
 
 ### Question2: Describe howyou would handle sensitive financial data, ensuring compliance with relevant regulations (e.g., GDPR, PCI-DSS), and how data sharing between microservices will be secured. 
 
@@ -14,10 +16,12 @@
 │
 ├── Questions
 │   ├── Question1.md
-│   └── Question2.md
+│   └── Question1.md
+    └── Question2.md
     └── Question3.md
     └── Question4.md
     └── Question5.md
+    
 │
 
 │

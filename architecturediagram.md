@@ -119,3 +119,37 @@ Ensuring Secure Communication:
 
 Responsibility: API Gateway enforces security measures to protect the communication between clients and microservices. This includes encrypting data in transit, preventing unauthorized access, and implementing security protocols.
 Sample Scenario: All communication between the external client (e.g., mobile app) and the API Gateway is encrypted using HTTPS. The gateway also verifies the identity of the client through secure authentication mechanisms before allowing access to sensitive financial data.
+
+
+### Express.js code for API Gateway
+### Sample Code
+const express = require('express');
+const app = express();
+
+// Middleware for authentication
+app.use((req, res, next) => {
+  // Perform authentication checks (e.g., validate API key, check user token)
+  // If authenticated, proceed to the next middleware
+  // Otherwise, return an authentication error
+  if (authenticate(req)) {
+    next();
+  } else {
+    res.status(401).json({ error: 'Authentication failed' });
+  }
+});
+
+// Middleware for request routing
+app.use('/accounts', accountsRouter); // Route to microservice handling accounts
+app.use('/transactions', transactionsRouter); // Route to microservice handling transactions
+
+// Sample endpoint
+app.get('/', (req, res) => {
+  res.json({ message: 'Welcome to the Banking API Gateway' });
+});
+
+// Start the server
+const port = 3000;
+app.listen(port, () => {
+  console.log(`API Gateway listening at http://localhost:${port}`);
+});
+

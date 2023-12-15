@@ -1,0 +1,90 @@
+datasource db {
+  provider = "sqlserver"
+  url      = env("DB_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  accounts    Account?
+  address     String
+  createdAt   DateTime @default(now())
+  firstName   String?
+  id          String   @id @default(cuid())
+  lastName    String?
+  password    String
+  phoneNumber Int
+  roles       Json
+  updatedAt   DateTime @updatedAt
+  username    String   @unique
+}
+
+model Account {
+  accountNumber     String?
+  accountType       String?
+  balance           String?
+  beneficiaries     Beneficiary?
+  createdAt         DateTime      @default(now())
+  currency          String?
+  id                String        @id @default(cuid())
+  notifications     Notification?
+  receiverAccountId Transaction?  @relation(name: "AccountReceiverAccountIdTransactionReceiverAccountId")
+  transactions      Transaction?  @relation(name: "senderAccountId")
+  updatedAt         DateTime      @updatedAt
+  userId            User          @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  userId            String        @unique
+}
+
+model Transaction {
+  amount            Decimal
+  createdAt         DateTime  @default(now())
+  date              DateTime?
+  id                String    @id @default(cuid())
+  receiverAccountId Account   @relation(name: "AccountReceiverAccountIdTransactionReceiverAccountId", fields: [receiverAccountId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  receiverAccountId String    @unique
+  senderAccountId   Account   @relation(name: "senderAccountId", fields: [senderAccountIdId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  senderAccountIdId String    @unique
+  status            String?
+  transactionType   String
+  updatedAt         DateTime  @updatedAt
+}
+
+model Bill {
+  amount    Decimal?
+  billType  String?
+  createdAt DateTime  @default(now())
+  dueDate   DateTime?
+  id        String    @id @default(cuid())
+  status    String?
+  updatedAt DateTime  @updatedAt
+}
+
+model Beneficiary {
+  accountNumber   String
+  bankName        String?
+  beneficiaryName String
+  createdAt       DateTime @default(now())
+  id              String   @id @default(cuid())
+  updatedAt       DateTime @updatedAt
+  userId          Account  @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  userId          String   @unique
+}
+
+model PaymentMethod {
+  createdAt DateTime @default(now())
+  id        String   @id @default(cuid())
+  updatedAt DateTime @updatedAt
+}
+
+model Notification {
+  createdAt DateTime  @default(now())
+  date      DateTime?
+  id        String    @id @default(cuid())
+  message   String?
+  status    String?
+  updatedAt DateTime  @updatedAt
+  userId    Account?  @relation(fields: [us], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  us        String?   @unique
+}
